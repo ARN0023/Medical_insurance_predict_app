@@ -1,0 +1,19 @@
+# Ignore VSCode settings
+.vscode/
+
+# Ignore virtual environment directory
+env/
+
+# Ignore medical directory
+medical/
+
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore directories containing Python bytecode files
+files/__pycache__/
+modules/__pycache__/
+backend/__pycache__/
+
+# Ignore Windows system file
+desktop.ini
