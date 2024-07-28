@@ -10,10 +10,6 @@ def data_visualization():
     # Load data
     df = load_data()
 
-    # Display data summary
-    st.write("### Data Summary")
-    st.write(df.describe())
-
     # Scatter plot of Charges vs Age
     st.write("### Scatter Plot of Charges vs Age")
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -38,6 +34,28 @@ def data_visualization():
     sns.boxplot(data=df, x='smoker', y='charges', ax=ax)
     ax.set_title('Charges by Smoker Status')
     ax.set_xlabel('Smoker')
+    ax.set_ylabel('Charges')
+    st.pyplot(fig)
+
+    # Distribution plot of Charges
+    st.write("### Distribution of Charges")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.histplot(df['charges'], kde=True, ax=ax)
+    ax.set_title('Distribution of Charges')
+    ax.set_xlabel('Charges')
+    st.pyplot(fig)
+
+    # Pair plot of numerical features
+    st.write("### Pair Plot of Numerical Features")
+    fig = sns.pairplot(df[['age', 'bmi', 'charges']])
+    st.pyplot(fig)
+
+    # Bar plot of average charges by region
+    st.write("### Average Charges by Region")
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.barplot(data=df, x='region', y='charges', estimator=sum, ax=ax)
+    ax.set_title('Average Charges by Region')
+    ax.set_xlabel('Region')
     ax.set_ylabel('Charges')
     st.pyplot(fig)
 

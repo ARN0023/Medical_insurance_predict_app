@@ -9,12 +9,12 @@ model = joblib.load(MODEL_PATH)
 def prediction():
     st.title("Prediction Using User Inputs")
 
-    age = st.number_input("Age", min_value=18, max_value=100, value=28)
-    sex = st.selectbox("Sex", ["Male", "Female"])
+    age = st.slider("Age", min_value=18, max_value=100, value=28)
+    sex = st.radio("Sex", ["Male", "Female"], horizontal=True)
     bmi = st.number_input("BMI", min_value=10.0, max_value=50.0, value=25.0)
-    children = st.number_input("Children", min_value=0, max_value=10, value=0)
-    smoker = st.selectbox("Smoker", ["Yes", "No"])
-    region = st.selectbox("Region", ["Southeast", "Southwest", "Northeast", "Northwest"])
+    children = st.slider("Children", min_value=0, max_value=10, value=0)
+    smoker = st.radio("Smoker", ["Yes", "No"], horizontal=True)
+    region = st.radio("Region", ["Southeast", "Southwest", "Northeast", "Northwest"])
 
     sex = 0 if sex == "Male" else 1
     smoker = 1 if smoker == "Yes" else 0
